@@ -1,12 +1,18 @@
-﻿namespace PokePet
+﻿using PokePet.Core;
+using PokePet.Core.Interfaces;
+
+namespace PokePet
 {
     public partial class MainPage : ContentPage
     {
         int count = 0;
 
-        public MainPage()
+        private readonly IPokemonService _pokeService;
+
+		public MainPage(IPokemonService pokeService)
         {
-            InitializeComponent();
+			_pokeService = pokeService;
+			InitializeComponent();
         }
 
         private void OnCounterClicked(object sender, EventArgs e)
