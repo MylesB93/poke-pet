@@ -9,6 +9,6 @@ namespace PokePet.Core.Interfaces
 {
 	public interface IPokemonService
 	{
-		Pokemon GetPokemon(string name);
+		Task<Pokemon> GetPokemonAsync(string name);
 	}
 }

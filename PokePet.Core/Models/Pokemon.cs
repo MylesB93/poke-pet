@@ -12,4 +12,10 @@ namespace PokePet.Core.Models
 		[JsonPropertyName("is_baby")]
 		public bool IsBaby { get; set; }
 	}
+
+	public class PokemonResponse
+	{
+		[JsonPropertyName("babies")]
+		public List<Pokemon>? Babies { get; set; }
+	}
 }

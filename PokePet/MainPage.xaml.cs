@@ -15,9 +15,10 @@ namespace PokePet
 			InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void OnCounterClicked(object sender, EventArgs e)
         {
-            count++;
+            var test = await _pokeService.GetPokemonAsync("igglybuff"); //debug code
+			count++;
 
             if (count == 1)
                 CounterBtn.Text = $"Clicked {count} time";
