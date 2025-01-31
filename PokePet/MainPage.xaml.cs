@@ -17,7 +17,6 @@ namespace PokePet
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
-            var test = await _pokeService.GetPokemonAsync("igglybuff"); //debug code
 			count++;
 
             if (count == 1)

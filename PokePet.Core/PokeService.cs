@@ -27,8 +27,7 @@ namespace PokePet.Core
 					  ) {
 						name
 						id
-						is_baby
-    
+						is_baby    
 					  }
 					}
 				",
