@@ -14,6 +14,14 @@ namespace PokePet
 			_pokeService = pokeService;
 			InitializeComponent();
         }
+
+        private async void OnEntryCompleted(object sender, EventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                await _pokeService.GetPokemonAsync(entry.Text);
+            }
+        }
     }
 
 }
