@@ -19,7 +19,11 @@ namespace PokePet
         {
             if (sender is Entry entry)
             {
-                await _pokeService.GetPokemonAsync(entry.Text);
+                var pokemon = await _pokeService.GetPokemonAsync(entry.Text);
+                if (pokemon != null)
+                {
+					resultLabel.Text = pokemon.Name;
+				}					
             }
         }
     }

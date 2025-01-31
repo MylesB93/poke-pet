@@ -11,6 +11,9 @@
             <Entry x:Name="entry"
                Placeholder="Enter a Pokémon"
                Completed="OnEntryCompleted" />
+
+            <Label x:Name="resultLabel"
+               FontSize="18" />
         </VerticalStackLayout>
     </ScrollView>
 
