@@ -1,12 +1,13 @@
-﻿using System.Text.Json.Serialization;
+﻿using SQLite;
+using System.Text.Json.Serialization;
 
 namespace PokePet.Core.Models
 {
-	// All the code in this file is included in all platforms.
+	[Table("pokemon")]
 	public class Pokemon
 	{
 		[JsonPropertyName("id")]
-		public int Id { get; set; }
+		public int PokemonId { get; set; }
 		[JsonPropertyName("name")]
 		public string? Name { get; set; }
 		[JsonPropertyName("is_baby")]

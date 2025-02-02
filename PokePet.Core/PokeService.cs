@@ -9,10 +9,12 @@ namespace PokePet.Core
 	public class PokeService : IPokemonService
 	{
 		private readonly GraphQLHttpClient _graphQLClient;
+		private readonly IPokemonRepository _pokemonRepository;
 
-		public PokeService(GraphQLHttpClient graphQLClient)
+		public PokeService(GraphQLHttpClient graphQLClient, IPokemonRepository pokemonRepository)
 		{
 			_graphQLClient = graphQLClient;
+			_pokemonRepository = pokemonRepository;
 		}
 
 		public async Task<Pokemon> GetPokemonAsync(string name)
@@ -37,6 +39,11 @@ namespace PokePet.Core
 			var response = await _graphQLClient.SendQueryAsync<PokemonResponse>(query);
 
 			return response.Data.Babies.FirstOrDefault(); //TODO: Address null reference exception
+		}
+
+		public async Task SetPokemonAsync(Pokemon pokemon)
+		{
+			await _pokemonRepository.SetPokemonAsync(pokemon);
 		}
 	}
 }

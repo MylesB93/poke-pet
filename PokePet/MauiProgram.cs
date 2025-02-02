@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using GraphQL.Client.Serializer.SystemTextJson;
 using PokePet.Core;
 using PokePet.Core.Interfaces;
+using PokePet.Core.Repositories;
 
 namespace PokePet
 {
@@ -21,6 +22,7 @@ namespace PokePet
 
 			builder.Services.AddSingleton(s => new GraphQLHttpClient("https://beta.pokeapi.co/graphql/v1beta", new SystemTextJsonSerializer()));
             builder.Services.AddScoped<IPokemonService, PokeService>();
+			builder.Services.AddScoped<IPokemonRepository, PokemonRepository>();
 
 #if DEBUG
 			builder.Logging.AddDebug();

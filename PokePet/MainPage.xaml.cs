@@ -36,7 +36,7 @@ namespace PokePet
 
         private void OnAcceptButtonClicked(object sender, EventArgs e)
 		{
-			
+			// TODO: Save the selected Pokemon
 		}
 
 		private void OnCancelButtonClicked(object sender, EventArgs e)
