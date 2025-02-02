@@ -16,11 +16,11 @@
                FontSize="18" />
 
             <Button x:Name="accept"
-                Text="Accept"
+                Text="Yes"
                 IsVisible="False"
                 Clicked="OnAcceptButtonClicked" />
             <Button x:Name="cancel"
-                Text="Cancel"
+                Text="No"
                 IsVisible="False"
                 Clicked="OnCancelButtonClicked" />
         </VerticalStackLayout>
