@@ -1,5 +1,6 @@
 ﻿using PokePet.Core;
 using PokePet.Core.Interfaces;
+using PokePet.Core.Models;
 using System.Globalization;
 
 namespace PokePet
@@ -10,6 +11,7 @@ namespace PokePet
 
         private readonly IPokemonService _pokeService;
 		private readonly TextInfo textInfo;
+        private Pokemon _selectedPokemon;
 
 		public MainPage(IPokemonService pokeService)
         {
@@ -23,10 +25,10 @@ namespace PokePet
         {
             if (sender is Entry entry)
             {
-                var pokemon = await _pokeService.GetPokemonAsync(entry.Text);
-                if (pokemon != null)
+                _selectedPokemon = await _pokeService.GetPokemonAsync(entry.Text);
+                if (_selectedPokemon != null && !string.IsNullOrEmpty(_selectedPokemon.Name))
                 {
-					resultLabel.Text = "So you choose " + textInfo.ToTitleCase(pokemon.Name) + " as your companion?";
+					resultLabel.Text = "So you choose " + textInfo.ToTitleCase(_selectedPokemon.Name) + " as your companion?";
                     accept.IsVisible = true;
                     cancel.IsVisible = true;
                     entry.IsEnabled = false;
@@ -34,9 +36,9 @@ namespace PokePet
             }
         }
 
-        private void OnAcceptButtonClicked(object sender, EventArgs e)
+        private async void OnAcceptButtonClicked(object sender, EventArgs e)
 		{
-			// TODO: Save the selected Pokemon
+            await _pokeService.SetPokemonAsync(_selectedPokemon);
 		}
 
 		private void OnCancelButtonClicked(object sender, EventArgs e)
