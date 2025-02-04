@@ -7,7 +7,7 @@ namespace PokePet.Core.Models
 	public class Pokemon
 	{
 		[PrimaryKey, AutoIncrement]
-		public int PokemonId { get; set; } // TODO: figure out how to make this auto increment (currently being initialised as 0)
+		public int PokemonId { get; set; }
 		[JsonPropertyName("id")]
 		public int Id { get; set; }
 		[JsonPropertyName("name")]

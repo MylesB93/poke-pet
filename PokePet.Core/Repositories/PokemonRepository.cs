@@ -16,7 +16,7 @@ namespace PokePet.Core.Repositories
 		public async Task SetPokemonAsync(Pokemon pokemon)
 		{
 			await _connection.CreateTableAsync<Pokemon>();
-			await _connection.InsertOrReplaceAsync(pokemon);
+			await _connection.InsertAsync(pokemon);
 		}
 	}
 }
