@@ -23,6 +23,18 @@
                 Text="No"
                 IsVisible="False"
                 Clicked="OnCancelButtonClicked" />
+
+            <CollectionView ItemsSource="{Binding PokemonList}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10" Margin="5" BackgroundColor="LightGray">
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" />
+                            </HorizontalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 

@@ -11,5 +11,6 @@ namespace PokePet.Core.Interfaces
 	{
 		Task<Pokemon> GetPokemonAsync(string name);
 		Task SetPokemonAsync(Pokemon pokemon);
+		Task<List<Pokemon>> GetAllPokemonFromDbAsync();
 	}
 }

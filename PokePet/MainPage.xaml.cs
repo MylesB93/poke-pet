@@ -1,6 +1,7 @@
 ﻿using PokePet.Core;
 using PokePet.Core.Interfaces;
 using PokePet.Core.Models;
+using System.Collections.ObjectModel;
 using System.Globalization;
 
 namespace PokePet
@@ -12,6 +13,7 @@ namespace PokePet
         private readonly IPokemonService _pokeService;
 		private readonly TextInfo textInfo;
         private Pokemon _selectedPokemon;
+		private ObservableCollection<Pokemon> PokemonList { get; set; } = new();
 
 		public MainPage(IPokemonService pokeService)
         {
@@ -19,9 +21,25 @@ namespace PokePet
 			textInfo = CultureInfo.CurrentCulture.TextInfo;
 
 			InitializeComponent();
-        }
 
-        private async void OnEntryCompleted(object sender, EventArgs e)
+			BindingContext = this;
+			LoadPokemon();
+		}
+
+		private async void LoadPokemon() // TODO: Duplicate code
+		{
+			var pokemonFromDb = await _pokeService.GetAllPokemonFromDbAsync();
+			if (pokemonFromDb != null)
+			{
+				PokemonList.Clear();
+				foreach (var pokemon in pokemonFromDb)
+				{
+					PokemonList.Add(pokemon);
+				}
+			}
+		}
+
+		private async void OnEntryCompleted(object sender, EventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -38,7 +56,17 @@ namespace PokePet
 
         private async void OnAcceptButtonClicked(object sender, EventArgs e)
 		{
-            await _pokeService.SetPokemonAsync(_selectedPokemon);
+			await _pokeService.SetPokemonAsync(_selectedPokemon);
+			var pokemon = await _pokeService.GetAllPokemonFromDbAsync();
+
+			if (pokemon != null)
+			{
+				PokemonList.Clear();
+				foreach (var mon in pokemon)
+				{
+					PokemonList.Add(mon);
+				}
+			}
 		}
 
 		private void OnCancelButtonClicked(object sender, EventArgs e)
