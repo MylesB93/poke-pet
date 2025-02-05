@@ -57,16 +57,7 @@ namespace PokePet
         private async void OnAcceptButtonClicked(object sender, EventArgs e)
 		{
 			await _pokeService.SetPokemonAsync(_selectedPokemon);
-			var pokemon = await _pokeService.GetAllPokemonFromDbAsync();
-
-			if (pokemon != null)
-			{
-				PokemonList.Clear();
-				foreach (var mon in pokemon)
-				{
-					PokemonList.Add(mon);
-				}
-			}
+			LoadPokemon();
 		}
 
 		private void OnCancelButtonClicked(object sender, EventArgs e)
