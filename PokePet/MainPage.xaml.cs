@@ -26,7 +26,7 @@ namespace PokePet
 			LoadPokemon();
 		}
 
-		private async void LoadPokemon() // TODO: Duplicate code
+		private async void LoadPokemon()
 		{
 			var pokemonFromDb = await _pokeService.GetAllPokemonFromDbAsync();
 			if (pokemonFromDb != null)
