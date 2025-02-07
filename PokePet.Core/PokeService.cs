@@ -28,8 +28,7 @@ namespace PokePet.Core
 						where: {is_baby: {_eq: true}, name: { _eq: $name} }
 					  ) {
 						name
-						id
-						is_baby    
+						id   
 					  }
 					}
 				",

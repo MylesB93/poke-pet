@@ -12,8 +12,6 @@ namespace PokePet.Core.Models
 		public int Id { get; set; }
 		[JsonPropertyName("name")]
 		public string? Name { get; set; }
-		[JsonPropertyName("is_baby")]
-		public bool IsBaby { get; set; }
 	}
 
 	public class PokemonResponse
