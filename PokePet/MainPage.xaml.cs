@@ -8,12 +8,10 @@ namespace PokePet
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         private readonly IPokemonService _pokeService;
 		private readonly TextInfo textInfo;
         private Pokemon _selectedPokemon;
-		private ObservableCollection<Pokemon> PokemonList { get; set; } = new();
+		public ObservableCollection<Pokemon> PokemonList { get; set; } = new();
 
 		public MainPage(IPokemonService pokeService)
         {
