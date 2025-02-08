@@ -65,5 +65,16 @@ namespace PokePet
 			accept.IsVisible = false;
 			cancel.IsVisible = false;
 		}
+
+		private async void OnDeleteButtonClicked(object sender, EventArgs e)
+		{
+			var button = sender as Button;
+
+			if (button?.CommandParameter is int pid)
+			{
+				await _pokeService.DeletePokemonAsync(pid);
+				LoadPokemon();
+			}
+		}
 	}
 }

@@ -49,5 +49,10 @@ namespace PokePet.Core
 		{
 			return await _pokemonRepository.GetAllAsync();
 		}
+
+		public async Task DeletePokemonAsync(int pid)
+		{
+			await _pokemonRepository.DeletePokemonAsync(pid);
+		}
 	}
 }

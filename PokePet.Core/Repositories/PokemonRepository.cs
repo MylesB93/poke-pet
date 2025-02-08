@@ -28,5 +28,10 @@ namespace PokePet.Core.Repositories
 		{
 			return await _connection.Table<Pokemon>().ToListAsync();
 		}
+
+		public async Task DeletePokemonAsync(int pid)
+		{
+			await _connection.DeleteAsync<Pokemon>(pid);
+		}
 	}
 }
