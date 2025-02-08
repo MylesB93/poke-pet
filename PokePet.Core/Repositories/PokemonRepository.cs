@@ -10,7 +10,12 @@ namespace PokePet.Core.Repositories
 
 		public PokemonRepository()
 		{
-			_connection = new SQLiteAsyncConnection("pokemon-db");
+			string applicationFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+			Directory.CreateDirectory(applicationFolderPath);
+			string databaseFileName = Path.Combine(applicationFolderPath, "pokemon.db");			
+
+			_connection = new SQLiteAsyncConnection(databaseFileName);
+			_connection.CreateTableAsync<Pokemon>();
 		}
 
 		public async Task SetPokemonAsync(Pokemon pokemon)
