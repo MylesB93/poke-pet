@@ -8,8 +8,8 @@
     Title="PokePet">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Search"
+        ContentTemplate="{DataTemplate local:Search}"
+        Route="Search" />
 
 </Shell>

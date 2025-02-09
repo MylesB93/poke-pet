@@ -6,14 +6,14 @@ using System.Globalization;
 
 namespace PokePet
 {
-    public partial class MainPage : ContentPage
+    public partial class Search : ContentPage
     {
         private readonly IPokemonService _pokeService;
 		private readonly TextInfo textInfo;
         private Pokemon _selectedPokemon;
 		public ObservableCollection<Pokemon> PokemonList { get; set; } = new();
 
-		public MainPage(IPokemonService pokeService)
+		public Search(IPokemonService pokeService)
         {
 			_pokeService = pokeService;
 			textInfo = CultureInfo.CurrentCulture.TextInfo;

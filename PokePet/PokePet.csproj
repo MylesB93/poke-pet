@@ -70,4 +70,10 @@
 	  <ProjectReference Include="..\PokePet.Core\PokePet.Core.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Search.xaml.cs">
+	    <DependentUpon>Search.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>
