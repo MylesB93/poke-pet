@@ -4,7 +4,7 @@ using GraphQL.Client.Serializer.SystemTextJson;
 using PokePet.Core.Interfaces;
 using GraphQL;
 
-namespace PokePet.Core
+namespace PokePet.Core.Services
 {
 	public class PokeService : IPokemonService
 	{

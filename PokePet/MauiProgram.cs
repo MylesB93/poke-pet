@@ -1,13 +1,13 @@
 ﻿using GraphQL.Client.Http;
 using Microsoft.Extensions.Logging;
 using GraphQL.Client.Serializer.SystemTextJson;
-using PokePet.Core;
 using PokePet.Core.Interfaces;
 using PokePet.Core.Repositories;
+using PokePet.Core.Services;
 
 namespace PokePet
 {
-    public static class MauiProgram
+	public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()
         {
