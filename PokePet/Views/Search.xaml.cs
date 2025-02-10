@@ -11,7 +11,7 @@ namespace PokePet
         private readonly IPokemonService _pokeService;
 		private readonly TextInfo textInfo;
         private Pokemon _selectedPokemon;
-		public ObservableCollection<Pokemon> PokemonList { get; set; } = new();
+		public ObservableCollection<Pokemon> PokemonList { get; set; } = new(); // TODO: Remove this
 
 		public Search(IPokemonService pokeService)
         {
@@ -21,20 +21,6 @@ namespace PokePet
 			InitializeComponent();
 
 			BindingContext = this;
-			LoadPokemon();
-		}
-
-		private async void LoadPokemon()
-		{
-			var pokemonFromDb = await _pokeService.GetAllPokemonFromDbAsync();
-			if (pokemonFromDb != null)
-			{
-				PokemonList.Clear();
-				foreach (var pokemon in pokemonFromDb)
-				{
-					PokemonList.Add(pokemon);
-				}
-			}
 		}
 
 		private async void OnEntryCompleted(object sender, EventArgs e)
@@ -55,7 +41,7 @@ namespace PokePet
         private async void OnAcceptButtonClicked(object sender, EventArgs e)
 		{
 			await _pokeService.SetPokemonAsync(_selectedPokemon);
-			LoadPokemon();
+			await Shell.Current.GoToAsync("///PokemonListing");
 		}
 
 		private void OnCancelButtonClicked(object sender, EventArgs e)
@@ -64,17 +50,6 @@ namespace PokePet
 			resultLabel.Text = "";
 			accept.IsVisible = false;
 			cancel.IsVisible = false;
-		}
-
-		private async void OnDeleteButtonClicked(object sender, EventArgs e)
-		{
-			var button = sender as Button;
-
-			if (button?.CommandParameter is int pid)
-			{
-				await _pokeService.DeletePokemonAsync(pid);
-				LoadPokemon();
-			}
 		}
 	}
 }

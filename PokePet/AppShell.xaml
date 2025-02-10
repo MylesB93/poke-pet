@@ -17,4 +17,9 @@
         ContentTemplate="{DataTemplate local:Search}"
         Route="Search" />
 
+    <ShellContent
+        Title="Your Pokemon"
+        ContentTemplate="{DataTemplate local:PokemonListing}"
+        Route="PokemonListing" />
+
 </Shell>
