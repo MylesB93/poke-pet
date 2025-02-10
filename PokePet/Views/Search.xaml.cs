@@ -11,7 +11,6 @@ namespace PokePet
         private readonly IPokemonService _pokeService;
 		private readonly TextInfo textInfo;
         private Pokemon _selectedPokemon;
-		public ObservableCollection<Pokemon> PokemonList { get; set; } = new(); // TODO: Remove this
 
 		public Search(IPokemonService pokeService)
         {
