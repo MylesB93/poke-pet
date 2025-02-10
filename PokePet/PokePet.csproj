@@ -71,13 +71,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Search.xaml.cs">
+	  <Compile Update="Views\Search.xaml.cs">
 	    <DependentUpon>Search.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Start.xaml">
+	  <MauiXaml Update="Views\Start.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
