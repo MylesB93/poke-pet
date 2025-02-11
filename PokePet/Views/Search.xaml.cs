@@ -39,13 +39,20 @@ namespace PokePet
 
         private async void OnAcceptButtonClicked(object sender, EventArgs e)
 		{
+			ResetSearch();
 			await _pokeService.SetPokemonAsync(_selectedPokemon);
 			await Shell.Current.GoToAsync("///PokemonListing");
 		}
 
 		private void OnCancelButtonClicked(object sender, EventArgs e)
         { 
-            entry.IsEnabled = true;
+            ResetSearch();
+		}
+
+		private void ResetSearch()
+		{
+			entry.Text = "";
+			entry.IsEnabled = true;
 			resultLabel.Text = "";
 			accept.IsVisible = false;
 			cancel.IsVisible = false;
