@@ -71,12 +71,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\PokePet.xaml.cs">
+	    <DependentUpon>PokePet.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Search.xaml.cs">
 	    <DependentUpon>Search.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\PokePet.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PokemonListing.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

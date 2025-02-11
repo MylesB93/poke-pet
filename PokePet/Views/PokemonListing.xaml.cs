@@ -35,6 +35,15 @@ public partial class PokemonListing : ContentPage
 		}
 	}
 
+	private async void OnSelectButtonClicked(object sender, EventArgs e)
+	{
+		var button = sender as Button;
+		if (button?.CommandParameter is int pid)
+		{
+			await Shell.Current.GoToAsync($"///PokePet?pid={pid}");
+		}
+	}
+
 	private async void LoadPokemon()
 	{
 		var pokemonFromDb = await _pokeService.GetAllPokemonFromDbAsync();

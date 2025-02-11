@@ -10,6 +10,10 @@
                     <Border Padding="10" Margin="5" BackgroundColor="LightGray">
                         <HorizontalStackLayout Spacing="10">
                             <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" />
+                            <Button x:Name="selectPokemon"
+                                Text="Select"
+                                Clicked="OnSelectButtonClicked"
+                                CommandParameter="{Binding PokemonId}"/>
                             <Button x:Name="releasePokemon"
                                         Text="Release"
                                         Clicked="OnReleaseButtonClicked"
