@@ -18,6 +18,6 @@ public partial class PokePet : ContentPage
 	{
 		base.OnNavigatedTo(args);
 
-		var pokemon = await _pokeService.GetSinglePokemonFromDbAsync(PokemonId);
+		BindingContext = await _pokeService.GetSinglePokemonFromDbAsync(PokemonId);
 	}
 }
