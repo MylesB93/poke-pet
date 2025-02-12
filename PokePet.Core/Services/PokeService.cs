@@ -54,5 +54,10 @@ namespace PokePet.Core.Services
 		{
 			await _pokemonRepository.DeletePokemonAsync(pid);
 		}
+
+		public async Task<Pokemon> GetSinglePokemonFromDbAsync(int pid)
+		{
+			return await _pokemonRepository.GetAsync(pid);
+		}
 	}
 }

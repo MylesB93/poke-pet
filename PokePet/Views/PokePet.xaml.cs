@@ -1,19 +1,23 @@
+using PokePet.Core.Interfaces;
+
 namespace PokePet;
 
+[QueryProperty(nameof(PokemonId), "pid")]
 public partial class PokePet : ContentPage
 {
-	public PokePet()
+	public int PokemonId { get; set; }
+	private IPokemonService _pokeService;
+
+	public PokePet(IPokemonService pokeService)
 	{
 		InitializeComponent();
+		_pokeService = pokeService;
 	}
 
-	protected override void OnNavigatedTo(NavigatedToEventArgs args)
+	protected async override void OnNavigatedTo(NavigatedToEventArgs args)
 	{
 		base.OnNavigatedTo(args);
 
-		//if (Shell.Current.CurrentState.Location.Query.TryGetValue("pid", out var query))
-		//{
-		//	// Do something
-		//}
+		var pokemon = await _pokeService.GetSinglePokemonFromDbAsync(PokemonId);
 	}
 }
