@@ -41,7 +41,7 @@ namespace PokePet
 		{
 			ResetSearch();
 			await _pokeService.SetPokemonAsync(_selectedPokemon);
-			await Shell.Current.GoToAsync("///PokemonListing");
+			await Shell.Current.GoToAsync($"PokePet?pid={_selectedPokemon.PokemonId}");
 		}
 
 		private void OnCancelButtonClicked(object sender, EventArgs e)
