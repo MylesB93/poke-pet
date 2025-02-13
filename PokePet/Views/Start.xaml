@@ -6,6 +6,6 @@
     <VerticalStackLayout>
         <Button x:Name="Search"
             Text="Search"
-            Clicked="OnSearchButtonClicked"/>
+            Clicked="OnSearchButtonClicked" WidthRequest="100"/>
     </VerticalStackLayout>
 </ContentPage>
