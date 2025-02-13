@@ -22,9 +22,4 @@
         ContentTemplate="{DataTemplate local:PokemonListing}"
         Route="PokemonListing" />
 
-    <ShellContent
-        Title="PokePet"
-        ContentTemplate="{DataTemplate local:PokePet}"
-        Route="PokePet" />
-
 </Shell>

@@ -40,7 +40,7 @@ public partial class PokemonListing : ContentPage
 		var button = sender as Button;
 		if (button?.CommandParameter is int pid)
 		{
-			await Shell.Current.GoToAsync($"///PokePet?pid={pid}");
+			await Shell.Current.GoToAsync($"PokePet?pid={pid}");
 		}
 	}
 
