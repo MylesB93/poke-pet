@@ -15,7 +15,6 @@ namespace PokePet
 		public Search(IPokemonService pokeService)
         {
 			_pokeService = pokeService;
-			textInfo = CultureInfo.CurrentCulture.TextInfo;
 
 			InitializeComponent();
 
@@ -29,7 +28,7 @@ namespace PokePet
                 _selectedPokemon = await _pokeService.GetPokemonAsync(entry.Text.ToLower());
                 if (_selectedPokemon != null && !string.IsNullOrEmpty(_selectedPokemon.Name))
                 {
-					resultLabel.Text = "So you choose " + textInfo.ToTitleCase(_selectedPokemon.Name) + " as your companion?";
+					resultLabel.Text = "So you choose " + _selectedPokemon.Name + " as your companion?";
                     accept.IsVisible = true;
                     cancel.IsVisible = true;
                     entry.IsEnabled = false;
