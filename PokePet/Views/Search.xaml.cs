@@ -25,7 +25,7 @@ namespace PokePet
         {
             if (sender is Entry entry)
             {
-                _selectedPokemon = await _pokeService.GetPokemonAsync(entry.Text.ToLower());
+                _selectedPokemon = await _pokeService.GetPokemonAsync(entry.Text.ToLower().Trim());
                 if (_selectedPokemon != null && !string.IsNullOrEmpty(_selectedPokemon.Name))
                 {
 					resultLabel.Text = "So you choose " + _selectedPokemon.Name + " as your companion?";
