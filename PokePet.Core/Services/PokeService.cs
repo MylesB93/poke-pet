@@ -42,7 +42,14 @@ namespace PokePet.Core.Services
 
 		public async Task SetPokemonAsync(Pokemon pokemon)
 		{
-			await _pokemonRepository.SetPokemonAsync(pokemon);
+			try
+			{
+				await _pokemonRepository.SetPokemonAsync(pokemon);
+			}
+			catch(Exception ex)
+			{
+				throw new Exception(ex.Message);
+			}
 		}
 
 		public async Task<List<Pokemon>> GetAllPokemonFromDbAsync()

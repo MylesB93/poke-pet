@@ -21,7 +21,18 @@ namespace PokePet.Core.Repositories
 		public async Task SetPokemonAsync(Pokemon pokemon)
 		{
 			await _connection.CreateTableAsync<Pokemon>();
-			await _connection.InsertAsync(pokemon);
+
+			var numberOfPokemon = await _connection.Table<Pokemon>().CountAsync();
+
+			if (numberOfPokemon >= 6)
+			{
+				throw new Exception("You can only have 6 pokemon at a time.");
+			}
+			else
+			{
+				await _connection.InsertAsync(pokemon);
+			}
+			
 		}
 
 		public async Task<List<Pokemon>> GetAllAsync()
