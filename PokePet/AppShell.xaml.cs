@@ -1,4 +1,6 @@
-﻿namespace PokePet
+﻿using Views = PokePet.Views;
+
+namespace PokePet
 {
     public partial class AppShell : Shell
     {
@@ -6,7 +8,7 @@
         {
             InitializeComponent();
 
-			Routing.RegisterRoute("PokePet", typeof(PokePet));
+			Routing.RegisterRoute("PokePet", typeof(Views.PokePet));
 		}
     }
 }

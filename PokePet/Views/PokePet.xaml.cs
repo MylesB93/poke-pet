@@ -1,6 +1,6 @@
 using PokePet.Core.Interfaces;
 
-namespace PokePet;
+namespace PokePet.Views;
 
 [QueryProperty(nameof(PokemonId), "pid")]
 public partial class PokePet : ContentPage

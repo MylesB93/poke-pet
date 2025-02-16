@@ -2,7 +2,7 @@ using PokePet.Core.Interfaces;
 using PokePet.Core.Models;
 using System.Collections.ObjectModel;
 
-namespace PokePet;
+namespace PokePet.Views;
 
 public partial class PokemonListing : ContentPage
 {

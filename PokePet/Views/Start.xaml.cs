@@ -1,4 +1,4 @@
-namespace PokePet;
+namespace PokePet.Views;
 
 public partial class Start : ContentPage
 {
