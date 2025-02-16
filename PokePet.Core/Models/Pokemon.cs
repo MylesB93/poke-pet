@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using PokePet.Core.Enums;
+using SQLite;
 using System.Text.Json.Serialization;
 
 namespace PokePet.Core.Models
@@ -30,6 +31,10 @@ namespace PokePet.Core.Models
 				}
 			}
 		}
+
+		public Hunger Hunger { get; set; }
+		public Tiredness Tiredness { get; set; }
+		public Boredom Boredom { get; set; }
 	}
 
 	public class PokemonResponse
