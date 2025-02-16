@@ -1,8 +1,7 @@
-﻿using GraphQL.Client.Http;
-using PokePet.Core.Models;
-using GraphQL.Client.Serializer.SystemTextJson;
+﻿using GraphQL;
+using GraphQL.Client.Http;
 using PokePet.Core.Interfaces;
-using GraphQL;
+using PokePet.Core.Models;
 
 namespace PokePet.Core.Services
 {

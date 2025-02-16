@@ -1,12 +1,10 @@
-﻿using PokePet.Core;
-using PokePet.Core.Interfaces;
+﻿using PokePet.Core.Interfaces;
 using PokePet.Core.Models;
-using System.Collections.ObjectModel;
 using System.Globalization;
 
 namespace PokePet
 {
-    public partial class Search : ContentPage
+	public partial class Search : ContentPage
     {
         private readonly IPokemonService _pokeService;
 		private readonly TextInfo textInfo;
