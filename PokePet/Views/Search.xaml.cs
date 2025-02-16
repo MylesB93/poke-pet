@@ -5,13 +5,13 @@ using System.Globalization;
 namespace PokePet.Views;
 
 public partial class Search : ContentPage
-    {
-        private readonly IPokemonService _pokeService;
+{
+	private readonly IPokemonService _pokeService;
 	private readonly TextInfo textInfo;
-        private Pokemon _selectedPokemon;
+	private Pokemon _selectedPokemon;
 
 	public Search(IPokemonService pokeService)
-        {
+	{
 		_pokeService = pokeService;
 
 		InitializeComponent();
@@ -20,21 +20,21 @@ public partial class Search : ContentPage
 	}
 
 	private async void OnEntryCompleted(object sender, EventArgs e)
-        {
-            if (sender is Entry entry)
-            {
-                _selectedPokemon = await _pokeService.GetPokemonAsync(entry.Text.ToLower().Trim());
-                if (_selectedPokemon != null && !string.IsNullOrEmpty(_selectedPokemon.Name))
-                {
+	{
+		if (sender is Entry entry)
+		{
+			_selectedPokemon = await _pokeService.GetPokemonAsync(entry.Text.ToLower().Trim());
+			if (_selectedPokemon != null && !string.IsNullOrEmpty(_selectedPokemon.Name))
+			{
 				resultLabel.Text = "So you choose " + _selectedPokemon.Name + " as your companion?";
-                    accept.IsVisible = true;
-                    cancel.IsVisible = true;
-                    entry.IsEnabled = false;
-			}					
-            }
-        }
+				accept.IsVisible = true;
+				cancel.IsVisible = true;
+				entry.IsEnabled = false;
+			}
+		}
+	}
 
-        private async void OnAcceptButtonClicked(object sender, EventArgs e)
+	private async void OnAcceptButtonClicked(object sender, EventArgs e)
 	{
 		ResetSearch();
 		try
@@ -45,12 +45,17 @@ public partial class Search : ContentPage
 		catch (Exception ex)
 		{
 			await DisplayAlert("Error", ex.Message, "OK");
-		}			
+		}
+	}
+
+	private async void OnLinkTapped(object sender, EventArgs e)
+	{
+		await Launcher.Default.OpenAsync("https://bulbapedia.bulbagarden.net/wiki/Baby_Pok%C3%A9mon#List_of_baby_Pok%C3%A9mon");
 	}
 
 	private void OnCancelButtonClicked(object sender, EventArgs e)
-        { 
-            ResetSearch();
+	{
+		ResetSearch();
 	}
 
 	private void ResetSearch()

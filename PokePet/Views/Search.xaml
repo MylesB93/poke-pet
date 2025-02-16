@@ -12,6 +12,13 @@
                Placeholder="Enter a Pokémon"
                Completed="OnEntryCompleted" />
 
+            <Label Text="See a list of baby pokemon here" 
+                   TextColor="Blue">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLinkTapped" />
+                    </Label.GestureRecognizers>
+            </Label>
+
             <Label x:Name="resultLabel"
                FontSize="18" />
 
