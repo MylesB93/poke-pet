@@ -1,4 +1,5 @@
 ﻿using PokePet.Core.Enums;
+using PokePet.Core.Features;
 using SQLite;
 using System.Text.Json.Serialization;
 
@@ -12,7 +13,7 @@ namespace PokePet.Core.Models
 
 		[JsonPropertyName("id")]
 		public int Id { get; set; }
-		
+
 		private string? _name;
 		[JsonPropertyName("name")]
 		public string? Name
@@ -32,10 +33,52 @@ namespace PokePet.Core.Models
 			}
 		}
 
-		public Hunger Hunger { get; set; }
-		public Tiredness Tiredness { get; set; }
-		public Boredom Boredom { get; set; }
+		private Hunger _hunger;
+		public Hunger Hunger
+		{
+			get => _hunger;
+			set
+			{
+				_hunger = value;
+				CalculateHappiness();
+			}
+		}
+
+		private Tiredness _tiredness;
+		public Tiredness Tiredness
+		{
+			get => _tiredness;
+			set
+			{
+				_tiredness = value;
+				CalculateHappiness();
+			}
+		}
+
+		private Boredom _boredom;
+		public Boredom Boredom
+		{
+			get => _boredom;
+			set
+			{
+				_boredom = value;
+				CalculateHappiness();
+			}
+		}
+
+		private int _happiness;
+		public int Happiness
+		{
+			get => _happiness;
+			private set => _happiness = value;
+		}
+
+		private void CalculateHappiness()
+		{
+			Happiness = HappinessCalculator.CalculateHappiness(Boredom, Hunger, Tiredness);
+		}
 	}
+
 
 	public class PokemonResponse
 	{
