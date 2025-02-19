@@ -72,7 +72,7 @@ namespace PokePet.Core.Models
 		}
 
 		private int _happiness;
-		public int Happiness
+		public int Happiness //Is there a better way to do this?
 		{
 			get => _happiness;
 			set => _happiness = value;
