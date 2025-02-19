@@ -8,6 +8,11 @@ namespace PokePet.Core.Models
 	[Table("pokemon")]
 	public class Pokemon
 	{
+		public Pokemon()
+		{
+			Happiness = 3;
+		}
+
 		[PrimaryKey, AutoIncrement]
 		public int PokemonId { get; set; }
 
@@ -70,7 +75,7 @@ namespace PokePet.Core.Models
 		public int Happiness
 		{
 			get => _happiness;
-			private set => _happiness = value;
+			set => _happiness = value;
 		}
 
 		private void CalculateHappiness()
