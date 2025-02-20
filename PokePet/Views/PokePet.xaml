@@ -5,5 +5,9 @@
              Title="Pokemon">
     <VerticalStackLayout>
         <Label Text="{Binding Name}" />
+        <Label Text="{Binding Happiness, StringFormat='Happiness: {0}'}" />
+        <Label Text="{Binding Tiredness, StringFormat='Tiredness: {0}'}" />
+        <Label Text="{Binding Boredom, StringFormat='Boredom: {0}'}" />
+        <Label Text="{Binding Hunger, StringFormat='Hunger: {0}'}" />
     </VerticalStackLayout>
 </ContentPage>
