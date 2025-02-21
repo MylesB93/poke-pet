@@ -78,7 +78,7 @@ namespace PokePet.Core.Models
 			set => _happiness = value;
 		}
 
-		public string ImagePath => $"baby_pokemon/{Name?.ToLower()}.png";
+		public string ImagePath => $"{Name?.ToLower()}.png";
 
 		private void CalculateHappiness()
 		{

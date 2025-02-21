@@ -60,6 +60,49 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\baby_pokemon\azurill.png" />
+	  <None Remove="Resources\Images\baby_pokemon\bonsly.png" />
+	  <None Remove="Resources\Images\baby_pokemon\budew.png" />
+	  <None Remove="Resources\Images\baby_pokemon\chingling.png" />
+	  <None Remove="Resources\Images\baby_pokemon\cleffa.png" />
+	  <None Remove="Resources\Images\baby_pokemon\elekid.png" />
+	  <None Remove="Resources\Images\baby_pokemon\happiny.png" />
+	  <None Remove="Resources\Images\baby_pokemon\igglybuff.png" />
+	  <None Remove="Resources\Images\baby_pokemon\magby.png" />
+	  <None Remove="Resources\Images\baby_pokemon\mantyke.png" />
+	  <None Remove="Resources\Images\baby_pokemon\munchlax.png" />
+	  <None Remove="Resources\Images\baby_pokemon\pichu.png" />
+	  <None Remove="Resources\Images\baby_pokemon\riolu.png" />
+	  <None Remove="Resources\Images\baby_pokemon\smoochum.png" />
+	  <None Remove="Resources\Images\baby_pokemon\togepi.png" />
+	  <None Remove="Resources\Images\baby_pokemon\toxel.png" />
+	  <None Remove="Resources\Images\baby_pokemon\tyrogue.png" />
+	  <None Remove="Resources\Images\baby_pokemon\wynaut.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\baby_pokemon\azurill.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\bonsly.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\budew.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\chingling.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\cleffa.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\elekid.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\happiny.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\igglybuff.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\magby.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\mantyke.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\mimejr.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\munchlax.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\pichu.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\riolu.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\smoochum.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\togepi.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\toxel.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\tyrogue.png" />
+	  <MauiImage Include="Resources\Images\baby_pokemon\wynaut.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="GraphQL.Client" Version="6.1.0" />
 		<PackageReference Include="GraphQL.Client.Serializer.SystemTextJson" Version="6.1.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
