@@ -1,4 +1,6 @@
+using PokePet.Core.Features;
 using PokePet.Core.Interfaces;
+using PokePet.Core.Models;
 
 namespace PokePet.Views;
 
@@ -7,6 +9,7 @@ public partial class PokePet : ContentPage
 {
 	public int PokemonId { get; set; }
 	private IPokemonService _pokeService;
+	private Pokemon _pokemon;
 
 	public PokePet(IPokemonService pokeService)
 	{
@@ -18,6 +21,15 @@ public partial class PokePet : ContentPage
 	{
 		base.OnNavigatedTo(args);
 
-		BindingContext = await _pokeService.GetSinglePokemonFromDbAsync(PokemonId);
+		_pokemon = await _pokeService.GetSinglePokemonFromDbAsync(PokemonId);
+		_pokemon.LoadLastState();
+		BindingContext = _pokemon;		
+	}
+
+	protected override void OnDisappearing()
+	{
+		base.OnDisappearing();
+
+		_pokemon.SaveState();
 	}
 }

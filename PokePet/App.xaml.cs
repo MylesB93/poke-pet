@@ -1,4 +1,6 @@
-﻿namespace PokePet
+﻿using PokePet.Core.Features;
+
+namespace PokePet
 {
     public partial class App : Application
     {
@@ -11,5 +13,5 @@
         {
             return new Window(new AppShell());
         }
-    }
+	}
 }
