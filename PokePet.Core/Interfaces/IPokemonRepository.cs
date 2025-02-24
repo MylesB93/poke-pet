@@ -8,5 +8,6 @@ namespace PokePet.Core.Interfaces
 		Task<List<Pokemon>> GetAllAsync();
 		Task DeletePokemonAsync(int pid);
 		Task<Pokemon> GetAsync(int pid);
+		Task UpdatePokemonAsync(Pokemon pokemon);
 	}
 }

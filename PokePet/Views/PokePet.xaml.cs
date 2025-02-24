@@ -31,5 +31,6 @@ public partial class PokePet : ContentPage
 		base.OnDisappearing();
 
 		_pokemon.SaveState();
+		_pokeService.UpdatePokemonAsync(_pokemon);
 	}
 }

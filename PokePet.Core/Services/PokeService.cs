@@ -65,5 +65,10 @@ namespace PokePet.Core.Services
 		{
 			return await _pokemonRepository.GetAsync(pid);
 		}
+
+		public async Task UpdatePokemonAsync(Pokemon pokemon)
+		{
+			await _pokemonRepository.UpdatePokemonAsync(pokemon);
+		}
 	}
 }

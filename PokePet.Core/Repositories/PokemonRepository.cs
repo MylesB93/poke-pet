@@ -49,5 +49,10 @@ namespace PokePet.Core.Repositories
 		{
 			return await _connection.Table<Pokemon>().Where(p => p.PokemonId == pid).FirstOrDefaultAsync();
 		}
+
+		public async Task UpdatePokemonAsync(Pokemon pokemon)
+		{
+			await _connection.UpdateAsync(pokemon);
+		}
 	}
 }
