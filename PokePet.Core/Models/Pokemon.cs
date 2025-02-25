@@ -102,9 +102,9 @@ namespace PokePet.Core.Models
 
 			if (minutesElapsed > 0) // Only update if some time has passed
 			{
-				Hunger = (Hunger)Math.Min((int)Hunger + minutesElapsed / 1, (int)Hunger.Starving);
-				Tiredness = (Tiredness)Math.Min((int)Tiredness + minutesElapsed / 1, (int)Tiredness.Exhausted);
-				Boredom = (Boredom)Math.Min((int)Boredom + minutesElapsed / 1, (int)Boredom.ReallyBored);
+				Hunger = (Hunger)Math.Min((int)Hunger + minutesElapsed / 60, (int)Hunger.Starving);
+				Tiredness = (Tiredness)Math.Min((int)Tiredness + minutesElapsed / 60, (int)Tiredness.Exhausted);
+				Boredom = (Boredom)Math.Min((int)Boredom + minutesElapsed / 60, (int)Boredom.ReallyBored);
 			}
 
 			// Update LastSaved to the current time after applying changes
