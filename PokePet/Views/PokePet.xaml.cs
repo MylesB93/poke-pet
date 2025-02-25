@@ -33,4 +33,10 @@ public partial class PokePet : ContentPage
 		_pokemon.SaveState();
 		_pokeService.UpdatePokemonAsync(_pokemon);
 	}
+
+	private async void FeedButton_Clicked(object sender, EventArgs e)
+	{
+		_pokemon.Feed();
+		await _pokeService.UpdatePokemonAsync(_pokemon);
+	}
 }

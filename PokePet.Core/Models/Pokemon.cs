@@ -1,12 +1,13 @@
 ﻿using PokePet.Core.Enums;
 using PokePet.Core.Features;
 using SQLite;
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 
 namespace PokePet.Core.Models
 {
 	[Table("pokemon")]
-	public class Pokemon
+	public class Pokemon : INotifyPropertyChanged
 	{
 		public Pokemon()
 		{
@@ -46,8 +47,12 @@ namespace PokePet.Core.Models
 			{
 				_hunger = value;
 				CalculateHappiness();
+				OnPropertyChanged(nameof(Hunger));
 			}
 		}
+
+		protected void OnPropertyChanged(string propertyName) =>
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 		private Tiredness _tiredness;
 		public Tiredness Tiredness
@@ -57,6 +62,7 @@ namespace PokePet.Core.Models
 			{
 				_tiredness = value;
 				CalculateHappiness();
+				OnPropertyChanged(nameof(Tiredness));
 			}
 		}
 
@@ -68,19 +74,25 @@ namespace PokePet.Core.Models
 			{
 				_boredom = value;
 				CalculateHappiness();
+				OnPropertyChanged(nameof(Boredom));
 			}
 		}
 
 		private int _happiness;
-		public int Happiness //Is there a better way to do this?
+		public int Happiness
 		{
 			get => _happiness;
-			set => _happiness = value;
+			set {
+				_happiness = value;
+				OnPropertyChanged(nameof(Happiness));
+			}
 		}
 
 		public string ImagePath => $"{Name?.ToLower()}.png";
 
 		public DateTime LastSaved { get; set; } = DateTime.MinValue;
+
+		public event PropertyChangedEventHandler? PropertyChanged;
 
 		private void CalculateHappiness()
 		{
@@ -114,6 +126,11 @@ namespace PokePet.Core.Models
 		public void SaveState()
 		{
 			LastSaved = DateTime.UtcNow;
+		}
+
+		public void Feed()
+		{
+			Hunger = (Hunger)Math.Max((int)Hunger - 1, (int)Hunger.Full);
 		}
 
 		private void ApplyElapsedTime(TimeSpan elapsed)
