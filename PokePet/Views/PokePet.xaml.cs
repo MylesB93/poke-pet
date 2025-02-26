@@ -42,13 +42,13 @@ public partial class PokePet : ContentPage
 
 	private async void SleepButton_Clicked(object sender, EventArgs e)
 	{
-		//_pokemon.Sleep();
-		//await _pokeService.UpdatePokemonAsync(_pokemon);
+		_pokemon.Sleep();
+		await _pokeService.UpdatePokemonAsync(_pokemon);
 	}
 
 	private async void PlayButton_Clicked(object sender, EventArgs e)
 	{
-		//_pokemon.Play();
-		//await _pokeService.UpdatePokemonAsync(_pokemon);
+		_pokemon.Play();
+		await _pokeService.UpdatePokemonAsync(_pokemon);
 	}
 }

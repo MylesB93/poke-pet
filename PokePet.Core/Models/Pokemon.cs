@@ -133,6 +133,16 @@ namespace PokePet.Core.Models
 			Hunger = (Hunger)Math.Max((int)Hunger - 1, (int)Hunger.Full);
 		}
 
+		public void Sleep()
+		{
+			Tiredness = (Tiredness)Math.Max((int)Tiredness - 1, (int)Tiredness.Awake);
+		}
+
+		public void Play()
+		{
+			Boredom = (Boredom)Math.Max((int)Boredom - 1, (int)Boredom.NotBored);
+		}
+
 		private void ApplyElapsedTime(TimeSpan elapsed)
 		{
 			int minutesElapsed = (int)elapsed.TotalMinutes;
