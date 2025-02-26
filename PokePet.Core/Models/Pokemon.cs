@@ -143,16 +143,6 @@ namespace PokePet.Core.Models
 			Boredom = (Boredom)Math.Max((int)Boredom - 1, (int)Boredom.NotBored);
 		}
 
-		private void ApplyElapsedTime(TimeSpan elapsed)
-		{
-			int minutesElapsed = (int)elapsed.TotalMinutes;
-
-			//Increase stats over time
-			Hunger = (Hunger)Math.Min((int)Hunger + minutesElapsed / 1, (int)Hunger.Starving);
-			Tiredness = (Tiredness)Math.Min((int)Tiredness + minutesElapsed / 1, (int)Tiredness.Exhausted);
-			Boredom = (Boredom)Math.Min((int)Boredom + minutesElapsed / 1, (int)Boredom.ReallyBored);
-		}
-
 		#endregion
 	}
 
