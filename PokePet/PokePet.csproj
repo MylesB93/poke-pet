@@ -44,10 +44,9 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-		<MauiSplashScreen Include="Resources\AppIcon\appicon.png" />
+		<MauiSplashScreen Include="Resources\Splash\splash.png" Color="red" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -61,7 +60,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\AppIcon\appicon.png" />
 	  <None Remove="Resources\Images\baby_pokemon\azurill.png" />
 	  <None Remove="Resources\Images\baby_pokemon\bonsly.png" />
 	  <None Remove="Resources\Images\baby_pokemon\budew.png" />
@@ -80,6 +78,7 @@
 	  <None Remove="Resources\Images\baby_pokemon\toxel.png" />
 	  <None Remove="Resources\Images\baby_pokemon\tyrogue.png" />
 	  <None Remove="Resources\Images\baby_pokemon\wynaut.png" />
+	  <None Remove="Resources\Splash\splash.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -134,6 +133,10 @@
 	  <MauiXaml Update="Views\Start.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 	</ItemGroup>
 
 </Project>
