@@ -3,6 +3,7 @@ using PokePet.Core.Features;
 using SQLite;
 using System.ComponentModel;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 
 namespace PokePet.Core.Models
 {
@@ -88,7 +89,7 @@ namespace PokePet.Core.Models
 			}
 		}
 
-		public string ImagePath => $"{Name?.ToLower()}.png";
+		public string ImagePath => $"{Regex.Replace(Name ?? string.Empty, "-", "").ToLower()}.png";
 
 		public DateTime LastSaved { get; set; } = DateTime.MinValue;
 
