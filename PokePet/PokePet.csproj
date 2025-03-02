@@ -124,6 +124,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Themes\PokeTheme.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\PokePet.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
