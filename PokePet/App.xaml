@@ -6,10 +6,6 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary Source="Themes/PokeTheme.xaml" />
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
-                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
