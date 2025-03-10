@@ -92,6 +92,12 @@ namespace PokePet.Core.Models
 		public string ImagePath => $"{Regex.Replace(Name ?? string.Empty, "-", "").ToLower()}.png";
 
 		public DateTime LastSaved { get; set; } = DateTime.MinValue;
+		public DateTime LastFed { get; set; } = DateTime.MinValue;
+		public DateTime LastPlayed { get; set; } = DateTime.MinValue;
+		public DateTime LastSlept { get; set; } = DateTime.MinValue;
+		public bool CanFeed() => (DateTime.UtcNow - LastFed).TotalMinutes >= 60;
+		public bool CanPlay() => (DateTime.UtcNow - LastPlayed).TotalMinutes >= 60;
+		public bool CanSleep() => (DateTime.UtcNow - LastSlept).TotalMinutes >= 60;
 
 		public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -131,17 +137,29 @@ namespace PokePet.Core.Models
 
 		public void Feed()
 		{
-			Hunger = (Hunger)Math.Max((int)Hunger - 1, (int)Hunger.Full);
+			if (CanFeed())
+			{
+				Hunger = (Hunger)Math.Max((int)Hunger - 1, (int)Hunger.Full);
+				LastFed = DateTime.UtcNow;
+			}
 		}
 
 		public void Sleep()
 		{
-			Tiredness = (Tiredness)Math.Max((int)Tiredness - 1, (int)Tiredness.Awake);
+			if (CanSleep())
+			{
+				Tiredness = (Tiredness)Math.Max((int)Tiredness - 1, (int)Tiredness.Awake);
+				LastSlept = DateTime.UtcNow;
+			}
 		}
 
 		public void Play()
 		{
-			Boredom = (Boredom)Math.Max((int)Boredom - 1, (int)Boredom.NotBored);
+			if (CanPlay())
+			{
+				Boredom = (Boredom)Math.Max((int)Boredom - 1, (int)Boredom.NotBored);
+				LastPlayed = DateTime.UtcNow;
+			}
 		}
 
 		#endregion

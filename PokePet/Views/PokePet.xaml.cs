@@ -36,19 +36,40 @@ public partial class PokePet : ContentPage
 
 	private async void FeedButton_Clicked(object sender, EventArgs e)
 	{
-		_pokemon.Feed();
-		await _pokeService.UpdatePokemonAsync(_pokemon);
+		if (_pokemon.CanFeed())
+		{
+			_pokemon.Feed();
+			await _pokeService.UpdatePokemonAsync(_pokemon);
+		}
+		else
+		{
+			await DisplayAlert("Warning", "You need to wait at least an hour to feed your Pokemon", "OK");
+		}		
 	}
 
 	private async void SleepButton_Clicked(object sender, EventArgs e)
 	{
-		_pokemon.Sleep();
-		await _pokeService.UpdatePokemonAsync(_pokemon);
+		if (_pokemon.CanSleep())
+		{
+			_pokemon.Sleep();
+			await _pokeService.UpdatePokemonAsync(_pokemon);
+		}
+		else
+		{
+			await DisplayAlert("Warning", "You need to wait at least an hour to put your Pokemon to sleep", "OK");
+		}		
 	}
 
 	private async void PlayButton_Clicked(object sender, EventArgs e)
 	{
-		_pokemon.Play();
-		await _pokeService.UpdatePokemonAsync(_pokemon);
+		if (_pokemon.CanPlay())
+		{
+			_pokemon.Play();
+			await _pokeService.UpdatePokemonAsync(_pokemon);
+		}
+		else
+		{
+			await DisplayAlert("Warning", "You need to wait at least an hour to play with your Pokemon", "OK");
+		}
 	}
 }
