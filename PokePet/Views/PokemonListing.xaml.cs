@@ -28,7 +28,9 @@ public partial class PokemonListing : ContentPage
 	{
 		var button = sender as Button;
 
-		if (button?.CommandParameter is int pid)
+		var isConfirmed = await DisplayAlert("Warning", "Are you sure you want to release this Pokemon?", "Yes", "No");
+
+		if (button?.CommandParameter is int pid && isConfirmed)
 		{
 			await _pokeService.DeletePokemonAsync(pid);
 			LoadPokemon();
