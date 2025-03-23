@@ -52,9 +52,6 @@ namespace PokePet.Core.Models
 			}
 		}
 
-		protected void OnPropertyChanged(string propertyName) =>
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
 		private Tiredness _tiredness;
 		public Tiredness Tiredness
 		{
@@ -88,6 +85,9 @@ namespace PokePet.Core.Models
 				OnPropertyChanged(nameof(Happiness));
 			}
 		}
+
+		protected void OnPropertyChanged(string propertyName) =>
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
 		public string ImagePath => $"{Regex.Replace(Name ?? string.Empty, "-", "").ToLower()}.png";
 
