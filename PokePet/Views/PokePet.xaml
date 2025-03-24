@@ -7,8 +7,11 @@
         <Label Text="{Binding Name}" />
         <Label Text="{Binding Happiness, StringFormat='Happiness: {0}'}" />
         <Label Text="{Binding Tiredness, StringFormat='Tiredness: {0}'}" />
+        <Label Text="{Binding TimeUntilNextSleep}" />
         <Label Text="{Binding Boredom, StringFormat='Boredom: {0}'}" />
+        <Label Text="{Binding TimeUntilNextPlay}" />
         <Label Text="{Binding Hunger, StringFormat='Hunger: {0}'}" />
+        <Label Text="{Binding TimeUntilNextFeed}" />
         <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" />
         <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
             <Button Text="Feed" Clicked="FeedButton_Clicked" WidthRequest="100" />

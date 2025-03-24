@@ -10,9 +10,24 @@ namespace PokePet.Core.Models
 	[Table("pokemon")]
 	public class Pokemon : INotifyPropertyChanged
 	{
+		private readonly IDispatcherTimer _timer;
+
 		public Pokemon()
 		{
 			Happiness = 3;
+
+			_timer = Application.Current?.Dispatcher?.CreateTimer()	?? throw new InvalidOperationException("Timer could not be created.");
+			_timer.Interval = TimeSpan.FromSeconds(1);
+			_timer.Tick += (s, e) =>
+			{
+				OnPropertyChanged(nameof(TimeUntilNextFeed));
+				OnPropertyChanged(nameof(TimeUntilNextPlay));
+				OnPropertyChanged(nameof(TimeUntilNextSleep));
+				OnPropertyChanged(nameof(CanFeed));
+				OnPropertyChanged(nameof(CanPlay));
+				OnPropertyChanged(nameof(CanSleep));
+			};
+			_timer.Start();
 		}
 
 		[PrimaryKey, AutoIncrement]
@@ -98,6 +113,9 @@ namespace PokePet.Core.Models
 		public bool CanFeed() => (DateTime.UtcNow - LastFed).TotalMinutes >= 60;
 		public bool CanPlay() => (DateTime.UtcNow - LastPlayed).TotalMinutes >= 60;
 		public bool CanSleep() => (DateTime.UtcNow - LastSlept).TotalMinutes >= 60;
+		public string TimeUntilNextFeed => $"Time until {this.Name} can be fed again: " + GetTimeRemaining(LastFed);
+		public string TimeUntilNextPlay => $"Time until {this.Name} can be played with again: " + GetTimeRemaining(LastPlayed);
+		public string TimeUntilNextSleep => $"Time until {this.Name} can sleep again: " + GetTimeRemaining(LastSlept);
 
 		public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -160,6 +178,13 @@ namespace PokePet.Core.Models
 				Boredom = (Boredom)Math.Max((int)Boredom - 1, (int)Boredom.NotBored);
 				LastPlayed = DateTime.UtcNow;
 			}
+		}
+
+		private string GetTimeRemaining(DateTime lastAction)
+		{
+			double minutesLeft = 60 - (DateTime.UtcNow - lastAction).TotalMinutes;
+			double secondsLeft = 60 - (DateTime.UtcNow - lastAction).Seconds;
+			return minutesLeft > 0 ? $"{(int)minutesLeft} min {secondsLeft} sec" : "Available!";
 		}
 
 		#endregion
