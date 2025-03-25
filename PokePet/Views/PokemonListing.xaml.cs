@@ -28,7 +28,7 @@ public partial class PokemonListing : ContentPage
 	{
 		var button = sender as Button;
 
-		var isConfirmed = await DisplayAlert("Warning", "Are you sure you want to release this Pokemon?", "Yes", "No");
+		var isConfirmed = await DisplayAlert("Warning", "Are you sure you want to release this Pokémon?", "Yes", "No");
 
 		if (button?.CommandParameter is int pid && isConfirmed)
 		{

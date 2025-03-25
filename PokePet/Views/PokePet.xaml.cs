@@ -43,7 +43,7 @@ public partial class PokePet : ContentPage
 		}
 		else
 		{
-			await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextFeed} to feed your Pokemon", "OK");
+			await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextFeed} to feed your Pokémon", "OK");
 		}		
 	}
 
@@ -56,7 +56,7 @@ public partial class PokePet : ContentPage
 		}
 		else
 		{
-			await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextSleep} to put your Pokemon to sleep", "OK");
+			await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextSleep} to put your Pokémon to sleep", "OK");
 		}		
 	}
 
@@ -69,7 +69,7 @@ public partial class PokePet : ContentPage
 		}
 		else
 		{
-			await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextPlay} to play with your Pokemon", "OK");
+			await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextPlay} to play with your Pokémon", "OK");
 		}
 	}
 }
