@@ -113,9 +113,9 @@ namespace PokePet.Core.Models
 		public bool CanFeed() => (DateTime.UtcNow - LastFed).TotalMinutes >= 60;
 		public bool CanPlay() => (DateTime.UtcNow - LastPlayed).TotalMinutes >= 60;
 		public bool CanSleep() => (DateTime.UtcNow - LastSlept).TotalMinutes >= 60;
-		public string TimeUntilNextFeed => $"Time until {this.Name} can be fed again: " + GetTimeRemaining(LastFed);
-		public string TimeUntilNextPlay => $"Time until {this.Name} can be played with again: " + GetTimeRemaining(LastPlayed);
-		public string TimeUntilNextSleep => $"Time until {this.Name} can sleep again: " + GetTimeRemaining(LastSlept);
+		public string TimeUntilNextFeed => GetTimeRemaining(LastFed);
+		public string TimeUntilNextPlay => GetTimeRemaining(LastPlayed);
+		public string TimeUntilNextSleep => GetTimeRemaining(LastSlept);
 
 		public event PropertyChangedEventHandler? PropertyChanged;
 
