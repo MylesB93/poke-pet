@@ -1,3 +1,4 @@
+using PokePet.Core.Enums;
 using PokePet.Core.Features;
 using PokePet.Core.Interfaces;
 using PokePet.Core.Models;
@@ -41,6 +42,10 @@ public partial class PokePet : ContentPage
 			_pokemon.Feed();
 			await _pokeService.UpdatePokemonAsync(_pokemon);
 		}
+		else if (_pokemon.Hunger == Hunger.Full)
+		{
+			await DisplayAlert("Warning", "Your Pokémon is not hungry", "OK");
+		}
 		else
 		{
 			await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextFeed} to feed your Pokémon", "OK");
@@ -54,6 +59,10 @@ public partial class PokePet : ContentPage
 			_pokemon.Sleep();
 			await _pokeService.UpdatePokemonAsync(_pokemon);
 		}
+		else if (_pokemon.Tiredness == Tiredness.Awake)
+		{
+			await DisplayAlert("Warning", "Your Pokémon is not tired", "OK");
+		}
 		else
 		{
 			await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextSleep} to put your Pokémon to sleep", "OK");
@@ -66,6 +75,10 @@ public partial class PokePet : ContentPage
 		{
 			_pokemon.Play();
 			await _pokeService.UpdatePokemonAsync(_pokemon);
+		}
+		else if (_pokemon.Boredom == Boredom.NotBored)
+		{
+			await DisplayAlert("Warning", "Your Pokémon is not bored", "OK");
 		}
 		else
 		{

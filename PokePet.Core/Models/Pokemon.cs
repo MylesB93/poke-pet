@@ -110,9 +110,9 @@ namespace PokePet.Core.Models
 		public DateTime LastFed { get; set; } = DateTime.MinValue;
 		public DateTime LastPlayed { get; set; } = DateTime.MinValue;
 		public DateTime LastSlept { get; set; } = DateTime.MinValue;
-		public bool CanFeed() => (DateTime.UtcNow - LastFed).TotalMinutes >= 60;
-		public bool CanPlay() => (DateTime.UtcNow - LastPlayed).TotalMinutes >= 60;
-		public bool CanSleep() => (DateTime.UtcNow - LastSlept).TotalMinutes >= 60;
+		public bool CanFeed() => (DateTime.UtcNow - LastFed).TotalMinutes >= 60 && Hunger < Hunger.Full;
+		public bool CanPlay() => (DateTime.UtcNow - LastPlayed).TotalMinutes >= 60 && Boredom < Boredom.NotBored;
+		public bool CanSleep() => (DateTime.UtcNow - LastSlept).TotalMinutes >= 60 && Tiredness < Tiredness.Awake;
 		public string TimeUntilNextFeed => GetTimeRemaining(LastFed);
 		public string TimeUntilNextPlay => GetTimeRemaining(LastPlayed);
 		public string TimeUntilNextSleep => GetTimeRemaining(LastSlept);
