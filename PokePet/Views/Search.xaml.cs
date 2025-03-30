@@ -7,7 +7,6 @@ namespace PokePet.Views;
 public partial class Search : ContentPage
 {
 	private readonly IPokemonService _pokeService;
-	private readonly TextInfo textInfo;
 	private Pokemon _selectedPokemon;
 
 	public Search(IPokemonService pokeService)
