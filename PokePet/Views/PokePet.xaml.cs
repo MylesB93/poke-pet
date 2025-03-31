@@ -10,7 +10,7 @@ public partial class PokePet : ContentPage
 {
 	public int PokemonId { get; set; }
 	private IPokemonService _pokeService;
-	private Pokemon _pokemon;
+	private Pokemon? _pokemon;
 
 	public PokePet(IPokemonService pokeService)
 	{
@@ -31,58 +31,70 @@ public partial class PokePet : ContentPage
 	{
 		base.OnDisappearing();
 
-		_pokemon.SaveState();
-		_pokeService.UpdatePokemonAsync(_pokemon);
+		if (_pokemon != null)
+		{
+			_pokemon.SaveState();
+			_pokeService.UpdatePokemonAsync(_pokemon);
+		}
 	}
 
 	private async void FeedButton_Clicked(object sender, EventArgs e)
 	{
-		if (_pokemon.CanFeed())
+		if (_pokemon != null)
 		{
-			_pokemon.Feed();
-			await _pokeService.UpdatePokemonAsync(_pokemon);
+			if (_pokemon.CanFeed())
+			{
+				_pokemon.Feed();
+				await _pokeService.UpdatePokemonAsync(_pokemon);
+			}
+			else if (_pokemon.Hunger == Hunger.Full)
+			{
+				await DisplayAlert("Warning", "Your Pokémon is not hungry", "OK");
+			}
+			else
+			{
+				await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextFeed} to feed your Pokémon", "OK");
+			}
 		}
-		else if (_pokemon.Hunger == Hunger.Full)
-		{
-			await DisplayAlert("Warning", "Your Pokémon is not hungry", "OK");
-		}
-		else
-		{
-			await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextFeed} to feed your Pokémon", "OK");
-		}		
 	}
 
 	private async void SleepButton_Clicked(object sender, EventArgs e)
 	{
-		if (_pokemon.CanSleep())
+		if (_pokemon != null)
 		{
-			_pokemon.Sleep();
-			await _pokeService.UpdatePokemonAsync(_pokemon);
+			if (_pokemon.CanSleep())
+			{
+				_pokemon.Sleep();
+				await _pokeService.UpdatePokemonAsync(_pokemon);
+			}
+			else if (_pokemon.Tiredness == Tiredness.Awake)
+			{
+				await DisplayAlert("Warning", "Your Pokémon is not tired", "OK");
+			}
+			else
+			{
+				await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextSleep} to put your Pokémon to sleep", "OK");
+			}
 		}
-		else if (_pokemon.Tiredness == Tiredness.Awake)
-		{
-			await DisplayAlert("Warning", "Your Pokémon is not tired", "OK");
-		}
-		else
-		{
-			await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextSleep} to put your Pokémon to sleep", "OK");
-		}		
 	}
 
 	private async void PlayButton_Clicked(object sender, EventArgs e)
 	{
-		if (_pokemon.CanPlay())
+		if (_pokemon != null)
 		{
-			_pokemon.Play();
-			await _pokeService.UpdatePokemonAsync(_pokemon);
-		}
-		else if (_pokemon.Boredom == Boredom.NotBored)
-		{
-			await DisplayAlert("Warning", "Your Pokémon is not bored", "OK");
-		}
-		else
-		{
-			await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextPlay} to play with your Pokémon", "OK");
+			if (_pokemon.CanPlay())
+			{
+				_pokemon.Play();
+				await _pokeService.UpdatePokemonAsync(_pokemon);
+			}
+			else if (_pokemon.Boredom == Boredom.NotBored)
+			{
+				await DisplayAlert("Warning", "Your Pokémon is not bored", "OK");
+			}
+			else
+			{
+				await DisplayAlert("Warning", $"You need to wait {_pokemon.TimeUntilNextPlay} to play with your Pokémon", "OK");
+			}
 		}
 	}
 }
