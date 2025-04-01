@@ -7,7 +7,7 @@ namespace PokePet.Views;
 public partial class Search : ContentPage
 {
 	private readonly IPokemonService _pokeService;
-	private Pokemon _selectedPokemon;
+	private Pokemon? _selectedPokemon;
 
 	public Search(IPokemonService pokeService)
 	{
@@ -38,8 +38,11 @@ public partial class Search : ContentPage
 		ResetSearch();
 		try
 		{
-			await _pokeService.SetPokemonAsync(_selectedPokemon);
-			await Shell.Current.GoToAsync($"PokePet?pid={_selectedPokemon.PokemonId}");
+			if (_selectedPokemon != null)
+			{
+				await _pokeService.SetPokemonAsync(_selectedPokemon);
+				await Shell.Current.GoToAsync($"PokePet?pid={_selectedPokemon.PokemonId}");
+			}
 		}
 		catch (Exception ex)
 		{
