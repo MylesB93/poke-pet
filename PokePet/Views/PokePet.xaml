@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PokePet.Views.PokePet"
-             Title="Pokemon">
+             Title="Pokemon"
+             x:DataType="{x:Type local:Pokemon}"
+             xmlns:local="clr-namespace:PokePet.Core.Models;assembly=PokePet.Core">
     <VerticalStackLayout>
         <Label Text="{Binding Name}" />
         <Label Text="{Binding Happiness, StringFormat='Happiness: {0}'}" />
