@@ -16,27 +16,32 @@ namespace PokePet.Core.Services
 			_pokemonRepository = pokemonRepository;
 		}
 
-		public async Task<Pokemon> GetPokemonAsync(string name)
+		public async Task<Pokemon?> GetPokemonAsync(string name)
 		{
 			var query = new GraphQLRequest
 			{
 				Query = @"
-					query babyPokemon($name: String!) {
-					  babies: pokemon_v2_pokemonspecies(
-						order_by: {id: asc, is_baby: asc, name: asc}
-						where: {is_baby: {_eq: true}, name: { _eq: $name} }
-					  ) {
-						name
-						id   
-					  }
-					}
-				",
+                    query babyPokemon($name: String!) {
+                      babies: pokemon_v2_pokemonspecies(
+                        order_by: {id: asc, is_baby: asc, name: asc}
+                        where: {is_baby: {_eq: true}, name: { _eq: $name} }
+                      ) {
+                        name
+                        id   
+                      }
+                    }
+                ",
 				Variables = new { name }
 			};
 
 			var response = await _graphQLClient.SendQueryAsync<PokemonResponse>(query);
 
-			return response.Data.Babies.FirstOrDefault(); //TODO: Address null reference exception
+			if (response.Data?.Babies == null || !response.Data.Babies.Any())
+			{
+				return null;
+			}
+
+			return response.Data.Babies.FirstOrDefault();
 		}
 
 		public async Task SetPokemonAsync(Pokemon pokemon)

@@ -4,7 +4,7 @@ namespace PokePet.Core.Interfaces
 {
 	public interface IPokemonService
 	{
-		Task<Pokemon> GetPokemonAsync(string name);
+		Task<Pokemon?> GetPokemonAsync(string name);
 		Task SetPokemonAsync(Pokemon pokemon);
 		Task<List<Pokemon>> GetAllPokemonFromDbAsync();
 		Task DeletePokemonAsync(int pid);
