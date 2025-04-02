@@ -7,6 +7,7 @@
              xmlns:local="clr-namespace:PokePet.Core.Models;assembly=PokePet.Core">
     <VerticalStackLayout>
         <Label Text="{Binding Name}" />
+        <Label Text="{Binding Gender}" />
         <Label Text="{Binding Happiness, StringFormat='Happiness: {0}'}" />
         
         <Label Text="{Binding Tiredness, StringFormat='Tiredness: {0}'}" />

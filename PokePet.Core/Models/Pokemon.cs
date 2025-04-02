@@ -11,6 +11,7 @@ namespace PokePet.Core.Models
 	public class Pokemon : INotifyPropertyChanged
 	{
 		private readonly IDispatcherTimer _timer;
+		private static readonly Random _random = new();
 
 		public Pokemon()
 		{
@@ -28,6 +29,8 @@ namespace PokePet.Core.Models
 				OnPropertyChanged(nameof(CanSleep));
 			};
 			_timer.Start();
+
+			Gender = (Gender)_random.Next(Enum.GetValues(typeof(Gender)).Length);
 		}
 
 		[PrimaryKey, AutoIncrement]
@@ -54,6 +57,7 @@ namespace PokePet.Core.Models
 				}
 			}
 		}
+		public Gender Gender { get; set; }
 
 		private Hunger _hunger;
 		public Hunger Hunger
