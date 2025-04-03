@@ -2,6 +2,7 @@
 using PokePet.Core.Features;
 using SQLite;
 using System.ComponentModel;
+using System.Globalization;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
@@ -12,6 +13,7 @@ namespace PokePet.Core.Models
 	{
 		private readonly IDispatcherTimer _timer;
 		private static readonly Random _random = new();
+		private TextInfo _textInfo = CultureInfo.CurrentCulture.TextInfo;
 
 		public Pokemon()
 		{
@@ -39,24 +41,42 @@ namespace PokePet.Core.Models
 		[JsonPropertyName("id")]
 		public int Id { get; set; }
 
-		private string? _name;
+		private string _name;
 		[JsonPropertyName("name")]
-		public string? Name
+		public string Name
 		{
 			get => _name;
 			set
 			{
 				if (!string.IsNullOrWhiteSpace(value))
 				{
-					var textInfo = System.Globalization.CultureInfo.CurrentCulture.TextInfo;
-					_name = textInfo.ToTitleCase(value.ToLower());
+					_name = _textInfo.ToTitleCase(value.ToLower());
 				}
 				else
 				{
-					_name = value;
+					throw new NullReferenceException("Name cannot be null or empty.");
 				}
 			}
 		}
+
+		private string _nickname;
+
+		public string Nickname
+		{
+			get => _nickname;
+			set
+			{
+				if (!string.IsNullOrWhiteSpace(value))
+				{
+					_nickname = _textInfo.ToTitleCase(value.ToLower());
+				}
+				else
+				{
+					_nickname = Name;
+				}
+			}
+		}
+
 		public Gender Gender { get; set; }
 
 		private Hunger _hunger;

@@ -24,5 +24,9 @@
             <Button Text="Sleep" Clicked="SleepButton_Clicked" WidthRequest="100" />
             <Button Text="Play" Clicked="PlayButton_Clicked" WidthRequest="100" />
         </HorizontalStackLayout>
+
+        <Entry x:Name="entry"
+               Placeholder="Enter a nickname for your Pokémon"
+               Completed="OnNicknameEntered" />
     </VerticalStackLayout>
 </ContentPage>

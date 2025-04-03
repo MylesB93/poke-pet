@@ -97,4 +97,12 @@ public partial class PokePet : ContentPage
 			}
 		}
 	}
+
+	private async void OnNicknameEntered(object sender, EventArgs e)
+	{
+		if (sender is Entry entry && _pokemon != null)
+		{
+			_pokemon.Nickname = entry.Text.ToLower();
+		}
+	}
 }
