@@ -114,9 +114,9 @@ namespace PokePet.Core.Models
 		public DateTime LastFed { get; set; } = DateTime.MinValue;
 		public DateTime LastPlayed { get; set; } = DateTime.MinValue;
 		public DateTime LastSlept { get; set; } = DateTime.MinValue;
-		public bool CanFeed() => (DateTime.UtcNow - LastFed).TotalMinutes >= 60 && Hunger > Hunger.Full;
-		public bool CanPlay() => (DateTime.UtcNow - LastPlayed).TotalMinutes >= 60 && Boredom > Boredom.NotBored;
-		public bool CanSleep() => (DateTime.UtcNow - LastSlept).TotalMinutes >= 60 && Tiredness > Tiredness.Awake;
+		public bool CanFeed() => (DateTime.Now - LastFed).TotalMinutes >= 60 && Hunger > Hunger.Full;
+		public bool CanPlay() => (DateTime.Now - LastPlayed).TotalMinutes >= 60 && Boredom > Boredom.NotBored;
+		public bool CanSleep() => (DateTime.Now - LastSlept).TotalMinutes >= 60 && Tiredness > Tiredness.Awake;
 		public string TimeUntilNextFeed => GetTimeRemaining(LastFed);
 		public string TimeUntilNextPlay => GetTimeRemaining(LastPlayed);
 		public string TimeUntilNextSleep => GetTimeRemaining(LastSlept);
@@ -154,7 +154,7 @@ namespace PokePet.Core.Models
 
 		public void SaveState()
 		{
-			LastSaved = DateTime.UtcNow;
+			LastSaved = DateTime.Now;
 		}
 
 		public void Feed()
@@ -162,7 +162,7 @@ namespace PokePet.Core.Models
 			if (CanFeed())
 			{
 				Hunger = (Hunger)Math.Max((int)Hunger - 1, (int)Hunger.Full);
-				LastFed = DateTime.UtcNow;
+				LastFed = DateTime.Now;
 			}
 		}
 
@@ -171,7 +171,7 @@ namespace PokePet.Core.Models
 			if (CanSleep())
 			{
 				Tiredness = (Tiredness)Math.Max((int)Tiredness - 1, (int)Tiredness.Awake);
-				LastSlept = DateTime.UtcNow;
+				LastSlept = DateTime.Now;
 			}
 		}
 
@@ -180,14 +180,14 @@ namespace PokePet.Core.Models
 			if (CanPlay())
 			{
 				Boredom = (Boredom)Math.Max((int)Boredom - 1, (int)Boredom.NotBored);
-				LastPlayed = DateTime.UtcNow;
+				LastPlayed = DateTime.Now;
 			}
 		}
 
 		private string GetTimeRemaining(DateTime lastAction)
 		{
-			double minutesLeft = 60 - (DateTime.UtcNow - lastAction).TotalMinutes;
-			double secondsLeft = 60 - (DateTime.UtcNow - lastAction).Seconds;
+			double minutesLeft = 60 - (DateTime.Now - lastAction).TotalMinutes;
+			double secondsLeft = 60 - (DateTime.Now - lastAction).Seconds;
 			return minutesLeft > 0 ? $"{(int)minutesLeft} min {secondsLeft} sec" : "Available!";
 		}
 
