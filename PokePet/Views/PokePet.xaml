@@ -6,7 +6,7 @@
              x:DataType="{x:Type local:Pokemon}"
              xmlns:local="clr-namespace:PokePet.Core.Models;assembly=PokePet.Core">
     <VerticalStackLayout>
-        <Label Text="{Binding Name}" />
+        <Label Text="{Binding Nickname}" />
         <Label Text="{Binding Gender}" />
         <Label Text="{Binding Happiness, StringFormat='Happiness: {0}'}" />
         

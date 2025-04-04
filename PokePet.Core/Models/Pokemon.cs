@@ -74,6 +74,8 @@ namespace PokePet.Core.Models
 				{
 					_nickname = Name;
 				}
+
+				OnPropertyChanged(nameof(Nickname));
 			}
 		}
 

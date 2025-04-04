@@ -103,6 +103,7 @@ public partial class PokePet : ContentPage
 		if (sender is Entry entry && _pokemon != null)
 		{
 			_pokemon.Nickname = entry.Text.ToLower();
+			_pokeService.UpdatePokemonAsync(_pokemon);
 		}
 	}
 }
