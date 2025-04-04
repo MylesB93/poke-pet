@@ -29,7 +29,16 @@
             <Entry x:Name="entry"
                Placeholder="Enter a nickname for your Pokémon"
                Completed="OnNicknameEntered" 
-               WidthRequest="300" Margin="0,10,0,0" />
+               WidthRequest="300" 
+               Margin="0,10,0,0"
+               IsVisible="False" />
+
+            <Button x:Name="rename"
+                Text="Rename Pokemon"
+                IsVisible="True"
+                Clicked="OnRenameButtonClicked"
+                Margin="0,10,0,0"
+                WidthRequest="150" />
         </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

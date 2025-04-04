@@ -104,6 +104,16 @@ public partial class PokePet : ContentPage
 		{
 			_pokemon.Nickname = entry.Text.ToLower();
 			_pokeService.UpdatePokemonAsync(_pokemon);
+
+			rename.IsVisible = true;
+			entry.IsVisible = false;
+			entry.Text = "";
 		}
+	}
+
+	private void OnRenameButtonClicked(object sender, EventArgs e)
+	{
+		rename.IsVisible = false;
+		entry.IsVisible = true;
 	}
 }
