@@ -10,7 +10,8 @@
 
             <Entry x:Name="entry"
                Placeholder="Enter a Pokémon"
-               Completed="OnEntryCompleted" />
+               Completed="OnEntryCompleted"
+               WidthRequest="200"  />
 
             <Label Text="See a list of baby pokemon here" 
                    TextColor="Blue">
@@ -25,11 +26,13 @@
             <Button x:Name="accept"
                 Text="Yes"
                 IsVisible="False"
-                Clicked="OnAcceptButtonClicked" />
+                Clicked="OnAcceptButtonClicked"
+                WidthRequest="75"  />
             <Button x:Name="cancel"
                 Text="No"
                 IsVisible="False"
-                Clicked="OnCancelButtonClicked" />
+                Clicked="OnCancelButtonClicked"
+                WidthRequest="75" />
         </VerticalStackLayout>
     </ScrollView>
 
