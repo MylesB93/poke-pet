@@ -59,11 +59,11 @@ namespace PokePet.Core.Models
 			}
 		}
 
-		private string _nickname;
+		private string? _nickname;
 
 		public string Nickname
 		{
-			get => _nickname;
+			get => string.IsNullOrWhiteSpace(_nickname) ? Name : _nickname;
 			set
 			{
 				if (!string.IsNullOrWhiteSpace(value))
@@ -72,7 +72,7 @@ namespace PokePet.Core.Models
 				}
 				else
 				{
-					_nickname = Name;
+					_nickname = null;
 				}
 
 				OnPropertyChanged(nameof(Nickname));
