@@ -12,7 +12,7 @@
                 <DataTemplate x:DataType="{x:Type models:Pokemon}">
                     <Border Padding="10" Margin="5">
                         <Grid ColumnDefinitions="Auto, *, Auto, Auto">
-                            <Label Text="{Binding Name}" FontSize="20" FontAttributes="Bold" 
+                            <Label Text="{Binding Nickname}" FontSize="20" FontAttributes="Bold" 
                                    Grid.Column="0" />
                             <BoxView Grid.Column="1" BackgroundColor="Transparent"/>
                             <Button x:Name="selectPokemon"
