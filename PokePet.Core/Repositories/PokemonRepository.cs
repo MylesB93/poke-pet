@@ -20,8 +20,6 @@ namespace PokePet.Core.Repositories
 
 		public async Task SetPokemonAsync(Pokemon pokemon)
 		{
-			//await _connection.CreateTableAsync<Pokemon>(); //Is this needed as is set in constructor?
-
 			var numberOfPokemon = await _connection.Table<Pokemon>().CountAsync();
 
 			if (numberOfPokemon >= 6)
