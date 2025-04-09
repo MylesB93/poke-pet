@@ -7,16 +7,16 @@
              xmlns:local="clr-namespace:PokePet.Core.Models;assembly=PokePet.Core">
     <VerticalStackLayout>
         <Label Text="{Binding Nickname}" />
-        <Label Text="{Binding Gender}" />
+        <Label Text="{Binding Gender, Converter={StaticResource EnumDescriptionConverter}}" />
         <Label Text="{Binding Happiness, StringFormat='Happiness: {0}'}" />
 
-        <Label Text="{Binding Tiredness, StringFormat='Tiredness: {0}'}" />
+        <Label Text="{Binding Tiredness, Converter={StaticResource EnumDescriptionConverter}, StringFormat='Tiredness: {0}'}" />
         <Label Text="{Binding TimeUntilNextSleep, StringFormat='Time until your Pokémon can be put to sleep again: {0}'}" />
 
         <Label Text="{Binding Boredom, Converter={StaticResource EnumDescriptionConverter}, StringFormat='Boredom: {0}'}" />
         <Label Text="{Binding TimeUntilNextPlay, StringFormat='Time until your Pokémon can be played with again: {0}'}" />
 
-        <Label Text="{Binding Hunger, StringFormat='Hunger: {0}'}" />
+        <Label Text="{Binding Hunger, Converter={StaticResource EnumDescriptionConverter}, StringFormat='Hunger: {0}'}" />
         <Label Text="{Binding TimeUntilNextFeed, StringFormat='Time until your Pokémon can be fed again: {0}'}" />
         <Image Source="{Binding ImagePath}" WidthRequest="100" HeightRequest="100" />
         <VerticalStackLayout >
