@@ -28,12 +28,17 @@ public partial class PokemonListing : ContentPage
 	{
 		var button = sender as Button;
 
-		var isConfirmed = await DisplayAlert("Warning", "Are you sure you want to release this Pokémon?", "Yes", "No");
-
-		if (button?.CommandParameter is int pid && isConfirmed)
+		if (button?.CommandParameter is int pid)
 		{
-			await _pokeService.DeletePokemonAsync(pid);
-			LoadPokemon();
+			var pokemon = await _pokeService.GetSinglePokemonFromDbAsync(pid);
+
+			var isConfirmed = await DisplayAlert("Warning", $"Are you sure you want to release {pokemon.Nickname}?", "Yes", "No");
+
+			if (isConfirmed)
+			{
+				await _pokeService.DeletePokemonAsync(pid);
+				LoadPokemon();
+			}
 		}
 	}
 
