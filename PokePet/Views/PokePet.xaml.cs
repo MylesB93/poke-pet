@@ -1,5 +1,4 @@
 using PokePet.Core.Enums;
-using PokePet.Core.Features;
 using PokePet.Core.Interfaces;
 using PokePet.Core.Models;
 

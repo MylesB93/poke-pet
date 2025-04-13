@@ -1,8 +1,6 @@
-﻿using Views = PokePet.Views;
-
-namespace PokePet
+﻿namespace PokePet
 {
-    public partial class AppShell : Shell
+	public partial class AppShell : Shell
     {
         public AppShell()
         {

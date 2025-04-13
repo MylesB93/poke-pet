@@ -1,6 +1,5 @@
 ﻿using PokePet.Core.Interfaces;
 using PokePet.Core.Models;
-using System.Globalization;
 
 namespace PokePet.Views;
 

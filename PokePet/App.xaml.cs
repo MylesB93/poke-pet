@@ -1,8 +1,6 @@
-﻿using PokePet.Core.Features;
-
-namespace PokePet
+﻿namespace PokePet
 {
-    public partial class App : Application
+	public partial class App : Application
     {
         public App()
         {
